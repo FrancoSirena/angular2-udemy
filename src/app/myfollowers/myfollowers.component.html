@@ -1,0 +1,24 @@
+
+<h2><span class="glyphicon glyphicon-git-hub"></span> This is me</h2>
+<div class="media" *ngIf="me">
+  <div class="media-left"><img [src]="me.avatar_url" alt="" class="media-object"></div>
+  <div class="media-body">
+    <h4 class="media-heading">{{me.name}}</h4>
+    <p class="text-info">{{me.bio}}</p>
+  </div>
+</div>
+
+<h3> My Followers from GitHub <span class="glyphicon glyphicon-git-hub"></span></h3>
+<ul class="media-list">
+  <li class="media" *ngFor="let follower of followers">
+    <div class="media-left">
+      <img class="media-object" [src]="follower.avatar_url" alt="Avatar">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{follower.login}}</h4>
+      Visit <a [routerLink]="[follower.login]">page</a>
+    </div>
+  </li>
+</ul>
+
+<button class="btn btn-default" (click)="goHome()">Go home</button>

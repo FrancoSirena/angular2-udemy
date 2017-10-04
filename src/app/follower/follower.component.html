@@ -1,0 +1,9 @@
+<div class="media" *ngIf="user">
+  <div class="media-left">
+    <img  class="media-object" [src]="user.avatar_url" alt="Avatar">
+  </div>
+  <div class="media-body">
+    <h2>{{user.name}}</h2>
+    <p class="text-info">{{user.bio}}</p>
+  </div>
+</div>

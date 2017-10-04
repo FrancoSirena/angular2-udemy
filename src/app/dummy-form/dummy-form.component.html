@@ -1,0 +1,28 @@
+<form action="" #courseForm="ngForm">
+    <div class="form-group">
+        <label for="name">Course Name</label>
+        <input type="text" id="name" class="form-control" (change)="log(name)" ngModel #name="ngModel" name="name" minlength="3" required>
+        <div>
+            <div class="alert alert-danger" *ngIf="name.touched && name.invalid && name.errors.required">Name is required</div>
+            <div class="alert alert-danger" *ngIf="name.dirty && name.invalid && name.errors.minlength">Name needs to have at leats {{name.errors.minlength.requiredLength}} </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select name="category" id="category" ngModel #category="ngModel" class="form-control" required>
+            <option value=""></option>
+            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="category.touched && category.invalid && category.errors.required">Category is required</div>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" name="hasGuarantee" ngModel #hasGuarantee="ngModel">30-day money-back guarantee
+        </label>
+    </div>
+    {{courseForm.value | json}}
+    <div>
+        <button class="btn btn-primary" type="submit" [disabled]="courseForm.invalid">Create</button>
+    </div>
+    
+</form>
